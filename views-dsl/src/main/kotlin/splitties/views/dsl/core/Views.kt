@@ -371,6 +371,35 @@ inline fun Ui.ratingBar(
     return ctx.ratingBar(id, theme, initView)
 }
 
+// ProgressBar
+
+inline fun Context.progressBar(
+        @IdRes id: Int = View.NO_ID,
+        @StyleRes theme: Int = NO_THEME,
+        initView: ProgressBar.() -> Unit = {}
+): ProgressBar {
+    contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
+    return view(id, theme, initView)
+}
+
+inline fun View.progressBar(
+        @IdRes id: Int = View.NO_ID,
+        @StyleRes theme: Int = NO_THEME,
+        initView: ProgressBar.() -> Unit = {}
+): ProgressBar {
+    contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
+    return context.progressBar(id, theme, initView)
+}
+
+inline fun Ui.progressBar(
+        @IdRes id: Int = View.NO_ID,
+        @StyleRes theme: Int = NO_THEME,
+        initView: ProgressBar.() -> Unit = {}
+): ProgressBar {
+    contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
+    return ctx.progressBar(id, theme, initView)
+}
+
 // SeekBar
 
 inline fun Context.seekBar(
