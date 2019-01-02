@@ -5,6 +5,7 @@ package splitties.views.dsl.coordinatorlayout
 import android.content.Context
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -21,6 +22,24 @@ inline fun CoordinatorLayout.defaultLParams(
 ): CoordinatorLayout.LayoutParams = CoordinatorLayout.LayoutParams(width, height).also {
     it.gravity = gravity
 }.apply(initParams)
+
+inline fun ViewGroup.coordinatorLayoutDefaultLParams(
+        width: Int = wrapContent,
+        height: Int = wrapContent,
+        gravity: Int = Gravity.NO_GRAVITY,
+        initParams: CoordinatorLayout.LayoutParams.() -> Unit = {}
+): CoordinatorLayout.LayoutParams = CoordinatorLayout.LayoutParams(width, height).also {
+    it.gravity = gravity
+}.apply(initParams)
+
+inline fun ViewGroup.coordinatorLayoutAppBarLParams(
+        height: Int = wrapContent,
+        initParams: CoordinatorLayout.LayoutParams.() -> Unit = {}
+): CoordinatorLayout.LayoutParams = coordinatorLayoutDefaultLParams(
+        width = matchParent,
+        height = height,
+        initParams = initParams
+)
 
 inline fun CoordinatorLayout.appBarLParams(
     height: Int = wrapContent,
