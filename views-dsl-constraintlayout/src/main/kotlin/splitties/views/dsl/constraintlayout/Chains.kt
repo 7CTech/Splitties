@@ -49,11 +49,7 @@ inline fun ConstraintLayout.horizontalChain(
     lateinit var previousView: View
     val lastIndex = views.lastIndex
     views.forEachWithIndex { index, view ->
-        val existingLParams = view.layoutParams as? ConstraintLayout.LayoutParams
-        val layoutParams = existingLParams?.apply {
-            width = defaultWidth
-            height = defaultHeight
-        } ?: lParams(defaultWidth, defaultHeight)
+        val layoutParams = view.layoutParams as? ConstraintLayout.LayoutParams ?: lParams(defaultWidth, defaultHeight)
         layoutParams.apply {
             initParams(view)
             if (index == 0) {
@@ -69,8 +65,8 @@ inline fun ConstraintLayout.horizontalChain(
                 endToStartOf(nextView)
             }
         }
-        if (existingLParams == null) add(view, layoutParams)
-        else view.layoutParams = existingLParams // Refresh to take changes into account
+        if (view.layoutParams == null) add(view, layoutParams)
+        else view.layoutParams = layoutParams // Refresh to take changes into account
         previousView = view
     }
 }
@@ -89,11 +85,7 @@ inline fun ConstraintLayout.verticalChain(
     lateinit var previousView: View
     val lastIndex = views.lastIndex
     views.forEachWithIndex { index, view ->
-        val existingLParams = view.layoutParams as? ConstraintLayout.LayoutParams
-        val layoutParams = existingLParams?.apply {
-            width = defaultWidth
-            height = defaultHeight
-        } ?: lParams(defaultWidth, defaultHeight)
+        val layoutParams = view.layoutParams as? ConstraintLayout.LayoutParams ?: lParams(defaultWidth, defaultHeight)
         layoutParams.apply {
             initParams(view)
             if (index == 0) {
@@ -109,7 +101,7 @@ inline fun ConstraintLayout.verticalChain(
                 bottomToTopOf(nextView)
             }
         }
-        if (existingLParams == null) add(view, layoutParams)
+        if (view.layoutParams == null) add(view, layoutParams)
         else view.layoutParams = layoutParams // Refresh to take changes into account
         previousView = view
     }
