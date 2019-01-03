@@ -1,41 +1,33 @@
-# Views DSL CoordinatorLayout
+# Views DSL DrawerLayout
 
-*CoordinatorLayout extension of [Views DSL](../views-dsl).*
+*DrawerLayout extension of [Views DSL](../views-dsl).*
 
 ## Table of contents
 
-* [Functions to instantiate a CoordinatorLayout](#functions-to-instantiate-a-coordinatorlayout)
-* [`CoordinatorLayout` extensions](#coordinatorlayout-extensions)
+* [Functions to instantiate a DrawerLayout](#functions-to-instantiate-a-drawerlayout)
+* [`DrawerLayout` extensions](#drawerlayout-extensions)
     * [`defaultLParams`](#defaultlparams)
-    * [`appBarLParams`](#appbarlparams)
-* [`CoordinatorLayout.LayoutParams` extensions](#coordinatorlayoutlayoutparams-extensions)
-    * [`anchorTo`](#anchorto)
+    * [`navigationViewLParams`](#appbarlparams)
 
-### Functions to instantiate a CoordinatorLayout
+### Functions to instantiate a DrawerLayout
 
-Instead of using `view(::CoordinatorLayout, …) { … }` or `view<CoordinatorLayout>(…) { … }`,
-you can use `coordinatorLayout(…) { … }`.
+Instead of using `view(::DrawerLayout, …) { … }` or `view<DrawerLayout>(…) { … }`,
+you can use `drawerLayout(…) { … }`.
 
-### `CoordinatorLayout` extensions
+### `DrawerLayout` extensions
 
 #### `defaultLParams`
 
-This extension has default width and height set to `wrapContent` and an
+This extension has default width and height set to `matchParent` and an
 optional `gravity` parameter.
 
-#### `appBarLParams`
+#### `navigationViewLParams`
 
-Has a `matchParent` width.
-Use it when adding an `AppBarLayout` or a similar View that takes the app bar role.
-
-### `CoordinatorLayout.LayoutParams` extensions
-
-#### `anchorTo`
-
-Anchors the passed View with the specified gravity, setting a generated id if it had none.
+Has a `wrapContent` width, a `matchParent` height, and a gravity of `Gravity.Start`.
+Use it when adding an `NavigationView`
 
 ## Download
 
 ```groovy
-implementation "com.louiscad.splitties:splitties-views-dsl-coordinatorlayout:$splitties_version"
+implementation "com.louiscad.splitties:splitties-views-dsl-drawerlayout:$splitties_version"
 ```
